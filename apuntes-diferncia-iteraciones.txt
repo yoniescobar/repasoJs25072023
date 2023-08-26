@@ -1,0 +1,170 @@
+---------------------------------------los que mutan no utilizar en React -------------------------------------
+
+Las funciones forEach, for, map, filter y reduce son utilizadas para iterar y manipular arrays en JavaScript, pero cada una tiene un propósito y comportamiento ligeramente diferente. Aquí está la diferencia entre ellas:
+
+1 - forEach:es un método que se utiliza para ejecutar una función proporcionada una vez para cada elemento del array. No devuelve un nuevo array ni modifica el array original. Es útil cuando deseas realizar alguna operación en cada elemento del array sin crear uno nuevo.
+
+Ejemplo:
+
+const array = [1, 2, 3, 4];
+array.forEach(item => console.log(item));
+
+
+2- for:es una estructura de control de flujo que se utiliza para iterar sobre un conjunto de instrucciones un número específico de veces. Aunque se puede utilizar para recorrer arrays, generalmente se prefiere usar otros métodos como forEach, map, filter o reduce para trabajar con arrays de manera más declarativa.
+
+3- map es un método que crea un nuevo array al llamar a una función proporcionada una vez por cada elemento del array original. Devuelve un nuevo array con los resultados de aplicar la función a cada elemento. Es útil para transformar un array en otro de la misma longitud.
+
+Ejemplo:
+
+const array = [1, 2, 3, 4];
+const newArray = array.map(item => item * 2);
+
+4- filter es un método que crea un nuevo array con todos los elementos que pasan una prueba (función proporcionada). Devuelve un nuevo array con los elementos que cumplan la condición establecida. Es útil cuando deseas filtrar elementos de un array.
+
+Ejemplo:
+
+const array = [1, 2, 3, 4];
+const filteredArray = array.filter(item => item > 2);
+
+
+5- Reduce es un método que aplica una función a un acumulador y a cada elemento en el array (de izquierda a derecha), reduciendo el array a un solo valor. Es útil para calcular un valor acumulado o una operación compleja en los elementos del array.
+
+Ejemplo:
+
+const array = [1, 2, 3, 4];
+const sum = array.reduce((accumulator, current) => accumulator + current, 0);
+
+5.1 reduce para calcular el total de un carrito de compra, donde cada elemento del carrito es un objeto con propiedades producto y 
+
+Ejemplo:
+
+const carrito = [
+    { producto: 'Camiseta', precio: 20 },
+    { producto: 'Pantalones', precio: 40 },
+    { producto: 'Zapatos', precio: 60 },
+    { producto: 'Sombrero', precio: 10 }
+];
+
+const total = carrito.reduce((acumulador, item) => acumulador + item.precio, 0);
+
+console.log(`Total del carrito: $${total}`);
+En este ejemplo, carrito es un array de objetos que representan los productos en el carrito de compra. Usamos el método reduce para sumar los precios de los productos en el carrito. La función de reducción toma un acumulador (inicializado en 0) y el elemento actual del carrito. En cada iteración, sumamos el precio del elemento actual al acumulador.
+
+Finalmente, imprimimos el total calculado del carrito utilizando una plantilla de cadena.
+
+Ten en cuenta que este es un ejemplo básico. En una aplicación real, podrías tener propiedades adicionales en los objetos del carrito, podrías aplicar descuentos, impuestos, etc. El uso de reduce en este escenario muestra cómo puedes iterar sobre los elementos de un carrito y realizar un cálculo acumulativo basado en una propiedad específica de cada elemento.
+
+
+
+
+5.2 
+
+const carrito = [
+    { producto: 'Camiseta', precio: 20 },
+    { producto: 'Pantalones', precio: 40 },
+    { producto: 'Zapatos', precio: 60 },
+    { producto: 'Sombrero', precio: 10 }
+];
+
+const descuento = 10; // 10% de descuento
+const impuesto = 8; // 8% de impuesto
+
+const total = carrito.reduce((acumulador, item) => acumulador + item.precio, 0);
+const descuentoAplicado = total * (descuento / 100);
+const totalConDescuento = total - descuentoAplicado;
+const impuestoAplicado = totalConDescuento * (impuesto / 100);
+const totalConImpuestos = totalConDescuento + impuestoAplicado;
+
+console.log(`Subtotal: $${total}`);
+console.log(`Descuento (${descuento}%): -$${descuentoAplicado.toFixed(2)}`);
+console.log(`Total después del descuento: $${totalConDescuento.toFixed(2)}`);
+console.log(`Impuestos (${impuesto}%): $${impuestoAplicado.toFixed(2)}`);
+console.log(`Total a pagar: $${totalConImpuestos.toFixed(2)}`);
+
+En este ejemplo, primero calculamos el subtotal sumando los precios de los productos del carrito. Luego, aplicamos el descuento y calculamos el total después del descuento. Después, calculamos el impuesto sobre el total con descuento. Finalmente, sumamos el impuesto al total y mostramos los resultados.
+
+Es importante tener en cuenta que los cálculos de descuentos e impuestos pueden variar según los requisitos específicos de tu aplicación. En este caso, estamos aplicando descuentos e impuestos de forma fija, pero en un sistema más complejo, es posible que necesites considerar descuentos variables, impuestos diferenciados y otros factores.
+
+
+
+
+********************************************************************************************
+En resumen, forEach se utiliza para ejecutar una función en cada elemento, map para transformar elementos y crear un nuevo array, filter para filtrar elementos basados en una condición, y reduce para realizar operaciones acumulativas. El bucle for es una estructura de control de flujo general y se recomienda utilizar los métodos de array cuando sea posible debido a su naturaleza más declarativa y legible.
+
+
+https://doesitmutate.xyz/
+
+
+
+*********************Datos mutantes y no muntante en js  con ejemplos*****************
+
+
+En JavaScript, los datos mutables son aquellos que pueden cambiar después de haber sido creados, mientras que los datos inmutables son aquellos que no pueden cambiar una vez que se han creado. Los datos primitivos (como números, cadenas, booleanos, null y undefined) son inmutables, mientras que los objetos (incluyendo arrays y funciones) son mutables.
+
+A continuación, te proporciono ejemplos que demuestran la mutabilidad y la inmutabilidad en JavaScript:
+
+Datos Mutables (Objetos y Arrays):
+
+// Objeto mutable
+const persona = { nombre: 'Juan', edad: 25 };
+persona.edad = 26;
+console.log(persona); // Output: { nombre: 'Juan', edad: 26 }
+
+// Array mutable
+const colores = ['rojo', 'verde', 'azul'];
+colores.push('amarillo');
+console.log(colores); // Output: ['rojo', 'verde', 'azul', 'amarillo']
+
+
+En estos ejemplos, puedes ver que los objetos y los arrays son mutables. Puedes cambiar sus propiedades o elementos después de haber sido creados.
+
+
+========> Datos Inmutables (Primitivos):
+
+// Datos primitivos inmutables
+let a = 5;
+let b = a;
+b = 10;
+console.log(a); // Output: 5 (a no cambió)
+
+let str1 = 'Hola';
+let str2 = str1;
+str2 = 'Adiós';
+console.log(str1); // Output: 'Hola' (str1 no cambió)
+
+En estos ejemplos, los valores primitivos (a y str1) son inmutables. Cuando asignas a a b o str1 a str2, estás copiando el valor, no la referencia al mismo objeto en memoria.
+
+La mutabilidad e inmutabilidad son conceptos importantes en programación. Los datos inmutables son más seguros en términos de prevenir efectos secundarios no deseados y errores difíciles de depurar. Sin embargo, en ciertos casos, la mutabilidad puede ser útil para cambiar datos dinámicamente. Es importante entender la diferencia entre estos dos conceptos para escribir un código efectivo y evitar sorpresas.
+
+
+***********************************************copias de array de objetos mutables y no mutables ejemplo *****************
+
+// Copia de un array de objetos (mutable)
+const originalArray = [{ nombre: 'Juan' }, { nombre: 'María' }];
+const copiaArray = [...originalArray]; // Creación de una copia superficial
+
+// Modificar un objeto en la copia
+copiaArray[0].nombre = 'Pedro';
+
+console.log(originalArray); // Output: [ { nombre: 'Pedro' }, { nombre: 'María' } ]
+console.log(copiaArray);    // Output: [ { nombre: 'Pedro' }, { nombre: 'María' } ]
+
+
+En este ejemplo, cuando se modifica un objeto en la copia, también se modifica el objeto correspondiente en el array original. Esto se debe a que las copias superficiales solo copian las referencias a los objetos, no los objetos en sí.
+
+=========> Copias de Arrays de Datos Inmutables:
+
+// Copia de un array de primitivos (inmutables)
+const originalArray = [1, 2, 3];
+const copiaArray = [...originalArray]; // Creación de una copia superficial
+
+// Modificar un valor en la copia
+copiaArray[0] = 10;
+
+console.log(originalArray); // Output: [1, 2, 3]
+console.log(copiaArray);    // Output: [10, 2, 3]
+
+
+En este ejemplo, al modificar un valor en la copia, el array original no se ve afectado. Esto se debe a que los valores primitivos son inmutables y se copian por valor.
+
+Recuerda que si necesitas hacer copias profundas de arrays de objetos mutables, donde también se clonen los objetos internos, podrías necesitar utilizar métodos como JSON.parse(JSON.stringify(array)) o bibliotecas como lodash.cloneDeep(array) para lograrlo. Estas técnicas realizan copias más profundas, pero pueden no ser eficientes en términos de rendimiento para grandes conjuntos de datos.
