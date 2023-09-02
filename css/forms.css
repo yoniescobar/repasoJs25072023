@@ -32,6 +32,7 @@ input[type ="email"]{
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    
 }
 
 button{
@@ -80,4 +81,11 @@ button:hover{
     margin-bottom: 15px;
 }
 
+
+#suma-form input[type="number"]{
+    background-color: #e74c3c;
+    text-align: end;
+    color: #fff;
+    font-size: 2rem;
+}
 
